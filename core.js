@@ -38,8 +38,11 @@ $(() => {
     // handle new items
     $('#js-shopping-list-form').submit(e => {
         e.preventDefault(); // block navigation
+        let newItemName = entryField.val();
+        if(!newItemName)
+            return;
         // TODO -- asynchronously push update to server
-        shoppingList.push(new ShoppingListItem(entryField.val(), false));
+        shoppingList.push(new ShoppingListItem(newItemName, false));
         renderShoppingList();
         entryField.val('');
     });
